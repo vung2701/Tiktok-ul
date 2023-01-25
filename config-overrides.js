@@ -1,8 +1,4 @@
-const {
-  override, useBabelRc
-} = require("customize-cra");
+// re-config webpack
+const { override, useBabelRc } = require('customize-cra');
 
-module.exports = override(
-    useBabelRc()
-
-);
+module.exports = override(useBabelRc());
