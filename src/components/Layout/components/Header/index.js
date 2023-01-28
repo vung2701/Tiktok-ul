@@ -1,16 +1,41 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faSpinner,
+    faMagnifyingGlass,
+    faPlus,
+    faEllipsisVertical,
+    faKeyboard,
+    faLanguage,
+} from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { useEffect, useState } from 'react';
-import { AccountItem, Wrapper as PopperWrapper } from '~/components/Popper';
+import { AccountItem, Menu, Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
+
+const menuItems = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard Shotcuts',
+    },
+];
 
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
@@ -29,9 +54,10 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="TikTok" />
                 </div>
+
                 <Tippy
                     interactive
-                    visible={searchResults.length > 0}
+                    visible={searchResults.length < 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
@@ -56,9 +82,16 @@ function Header() {
                         </button>
                     </form>
                 </Tippy>
+
                 <div className={cx('action')}>
                     <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>Upload</Button>
                     <Button primary>Login</Button>
+
+                    <Menu items={menuItems}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>

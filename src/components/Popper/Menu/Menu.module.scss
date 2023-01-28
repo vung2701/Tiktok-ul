@@ -1,0 +1,21 @@
+// menu wrapper
+.menu-list {
+    width: 224px;
+
+    .menu-item {
+        justify-content: flex-start;
+        width: 100%;
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 9px 8px 9px 16px;
+        border-radius: 0;
+
+        & + .menu-item {
+            margin-left: 0;
+        }
+    }
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}

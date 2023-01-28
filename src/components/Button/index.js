@@ -7,6 +7,7 @@ const cx = classNames.bind(styles);
 function Button({
     to,
     href,
+    text,
     primary = false,
     outline = false,
     disable = false,
@@ -39,6 +40,7 @@ function Button({
 
     const classes = cx('wrapper', {
         [className]: className,
+        text,
         primary,
         outline,
         disable,
