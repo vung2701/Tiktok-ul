@@ -5,9 +5,9 @@
     .menu-item {
         justify-content: flex-start;
         width: 100%;
-        font-size: 1.6rem;
+        height: unset;
         font-weight: 500;
-        padding: 9px 8px 9px 16px;
+        padding: 10px 8px 10px 16px;
         border-radius: 0;
 
         & + .menu-item {
@@ -18,4 +18,25 @@
 
 .menu-popper {
     padding-bottom: 8px;
+}
+
+// Children Menu
+.header {
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: -8px;
+}
+.back-btn {
+    padding-left: 28px;
+    height: 100%;
+    width: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

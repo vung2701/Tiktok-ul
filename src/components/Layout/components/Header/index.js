@@ -21,10 +21,25 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-const menuItems = [
+const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'languages',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'languages',
+                    code: 'vn',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -47,6 +62,15 @@ function Header() {
 
         return () => clearTimeout(timerId);
     }, []);
+
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'languages':
+                console.log('change languages');
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -87,7 +111,7 @@ function Header() {
                     <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>Upload</Button>
                     <Button primary>Login</Button>
 
-                    <Menu items={menuItems}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
