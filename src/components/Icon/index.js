@@ -2,13 +2,13 @@ export const CreateEffectsIcon = ({ width = '2.2rem', height = '2.2rem', classNa
     <svg
         className={className}
         xmlns="http://www.w3.org/2000/svg"
-        fill="none"
+        fill="currentColor"
         viewBox="0 0 22 22"
         width={width}
         height={height}
     >
         <path
-            fill="black"
+            fill="currentColor"
             d="M0 22V11C0 4.925 4.925 0 11 0s11 4.925 11 11v11H0zm19.25-2.75V11A8.25 8.25 0 007.055 3.753a8.243 8.243 0 018.09 3.632A5.479 5.479 0 0116.5 11v8.25h2.75zM7.946 6.425a5.5 5.5 0 00-5.196 5.492v7.333H5.5V11c0-1.908.971-3.589 2.446-4.575zm5.008 2.64A2.75 2.75 0 008.25 11v8.25h5.5v-7.333c0-1.044-.291-2.02-.796-2.852z"
         ></path>
         <path
@@ -109,7 +109,7 @@ export const SearchIcon = ({ width = '2.4rem', height = '2.4rem', className }) =
         data-e2e=""
         height={height}
         viewBox="0 0 48 48"
-        fill="rgba(22, 24, 35, .34)"
+        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path
