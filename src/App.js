@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './components/Layout/DefaultLayout';
 import { publicRoutes } from './routes';
 
 function App() {
     return (
-        <BrowserRouter>
+        <Router>
             <div className="App">
                 <Routes>
                     {publicRoutes.map((route, index) => {
@@ -32,7 +32,7 @@ function App() {
                     })}
                 </Routes>
             </div>
-        </BrowserRouter>
+        </Router>
     );
 }
 

@@ -8,10 +8,11 @@ import HeaderOnly from '~/components/Layout/HeaderOnly';
 const publicRoutes = [
     { path: '/', components: Home },
     { path: '/following', components: Following },
-    { path: '/profile', components: Profile },
+    { path: '/:nickname', components: Profile },
     { path: '/upload', components: Upload, layout: HeaderOnly },
     { path: '/search', components: Search, layout: null },
 ];
+
 const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };
