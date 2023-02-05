@@ -8,6 +8,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Search.module.scss';
 import { AccountItem, Wrapper as PopperWrapper } from '~/components/Popper';
 import { SearchIcon } from '~/components/Icon';
+import { useDebounce } from '~/components/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -17,10 +18,12 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 1000);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
@@ -38,7 +41,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleHideResult = () => {
         setShowResult(false);
