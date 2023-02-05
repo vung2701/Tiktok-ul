@@ -4,10 +4,10 @@ const useDebounce = (value, delay) => {
     const [debounceValue, setDebounceValue] = useState(value);
 
     useEffect(() => {
-        console.log('+ 1000');
         const handler = setTimeout(() => setDebounceValue(value), delay);
 
         return () => clearTimeout(handler);
+        // eslint-disable-next-line
     }, [value]);
 
     return debounceValue;

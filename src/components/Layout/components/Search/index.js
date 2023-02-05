@@ -9,6 +9,7 @@ import styles from './Search.module.scss';
 import { AccountItem, Wrapper as PopperWrapper } from '~/components/Popper';
 import { SearchIcon } from '~/components/Icon';
 import { useDebounce } from '~/components/hooks';
+import * as searchServices from '~/apiServices/searchServices';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 1000);
+    const debounced = useDebounce(searchValue, 800);
 
     const inputRef = useRef();
 
@@ -28,19 +29,15 @@ function Search() {
             return;
         }
 
-        setLoading(true);
+        const FetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+            setShowResult(true);
+            setLoading(false);
+        };
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setShowResult(true);
-                setLoading(false);
-            })
-
-            .catch(() => {
-                setLoading(false);
-            });
+        FetchApi();
     }, [debounced]);
 
     const handleHideResult = () => {
@@ -69,7 +66,9 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value.trim()) setSearchValue(e.target.value);
+                    }}
                 />
                 {!!searchValue && (
                     <>
