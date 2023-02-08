@@ -6,9 +6,10 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import styles from './Search.module.scss';
-import { AccountItem, Wrapper as PopperWrapper } from '~/components/Popper';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icon';
-import { useDebounce } from '~/components/hooks';
+import { useDebounce } from '~/hooks';
 import * as searchService from '~/services/searchService';
 
 const cx = classNames.bind(styles);
