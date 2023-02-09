@@ -12,7 +12,7 @@
     border-radius: 4px;
     cursor: pointer;
     color: var(--text-xolor);
-    background-color: var(--while);
+    background-color: var(--white);
     border: 1px solid rgba(22, 24, 35, 0.12);
     user-select: none;
 
@@ -48,7 +48,7 @@
 }
 
 .primary {
-    color: var(--while);
+    color: var(--white);
     background-color: var(--primary);
 
     &:hover {

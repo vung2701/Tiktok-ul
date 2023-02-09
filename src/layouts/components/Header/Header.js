@@ -121,7 +121,7 @@ const MENU_ITEMS = [
     },
 ];
 
-const currentUser = true;
+const currentUser = false;
 
 const USER_MENU = [
     {

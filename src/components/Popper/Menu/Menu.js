@@ -35,31 +35,33 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         });
     };
 
+    // Reset to first Menu
+    const handleReset = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
+
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderMenu = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {!!current.title && <Header title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
+
     return (
         <Tippy
             interactive
-            delay={[0, 700]}
+            delay={[100, 1000]}
             offset={[12, 10]}
             hideOnClick={hideOnClick}
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {!!current.title && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => {
-                setHistory((prev) => prev.slice(0, 1));
-            }}
+            render={renderMenu}
+            onHide={handleReset}
         >
             {children}
         </Tippy>
@@ -68,7 +70,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
 
 Menu.propTypes = {
     children: PropTypes.node.isRequired,
-    item: PropTypes.array.isRequired,
+    item: PropTypes.array,
     hideOnClick: PropTypes.bool,
     onChange: PropTypes.func,
 };
