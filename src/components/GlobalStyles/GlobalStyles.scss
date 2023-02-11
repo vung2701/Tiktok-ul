@@ -66,6 +66,10 @@ a {
     text-decoration: none;
 }
 
+a:focus {
+    outline: none;
+}
+
 // fonts emmbeded
 @font-face {
     font-family: SofiaPro;
@@ -107,4 +111,8 @@ body {
     .tippy-content {
         padding: 8px 9px;
     }
+}
+
+.relative {
+    position: relative;
 }

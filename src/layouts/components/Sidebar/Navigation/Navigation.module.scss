@@ -1,0 +1,45 @@
+.navigation {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background ease-in-out 200ms;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+
+    &.active {
+        color: var(--primary);
+        & .active-icon {
+            display: flex;
+        }
+
+        & .icon {
+            display: none;
+        }
+    }
+}
+
+.title {
+    margin-left: 8px;
+}
+
+.icon,
+.active-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active-icon {
+    display: none;
+}

@@ -22,6 +22,7 @@ import { CreateEffectsIcon, InBoxIcon, MessageIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
 import Search from '../Search';
+import Badge, { BadgeWrapper } from '~/components/Badge';
 
 const cx = classNames.bind(styles);
 
@@ -121,7 +122,7 @@ const MENU_ITEMS = [
     },
 ];
 
-const currentUser = false;
+const currentUser = true;
 
 const USER_MENU = [
     {
@@ -185,10 +186,14 @@ function Header() {
                                     <MessageIcon />
                                 </button>
                             </Tippy>
+
                             <Tippy trigger="click" content="Inbox" placement="bottom">
-                                <button className={cx('actions-btn')}>
-                                    <InBoxIcon />
-                                </button>
+                                <BadgeWrapper>
+                                    <button className={cx('actions-btn')}>
+                                        <InBoxIcon />
+                                    </button>
+                                    <Badge title="12" />
+                                </BadgeWrapper>
                             </Tippy>
                         </>
                     ) : (
